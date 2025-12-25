@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-char Handle_Value(int Randc);
+char Handle_Input(int Randc);
 int Game(char player, char computer);
 void Greetings(int point);
 
@@ -33,7 +33,7 @@ int main() {
   srand(time(NULL));
   randc = rand() % 100; // Generate Random number less than 100
 
-  comp = Handle_Value(randc);
+  comp = Handle_Input(randc);
   player = input;
   printf("\nYou : %c\nComputer : %c", player, comp);
   Greetings(Game(player, comp));
@@ -41,6 +41,7 @@ int main() {
   return 0;
 }
 
+// (Game Engine) which is Decide who win
 int Game(char player, char computer) {
   if (player == computer) {
     return -1; // Draw
@@ -64,7 +65,8 @@ int Game(char player, char computer) {
   }
 }
 
-char Handle_Value(int Randc) {
+// Handle computer random number to as character input
+char Handle_Input(int Randc) {
   if (Randc < 33) {
     return 's';
   } else if (Randc < 66) {
@@ -74,6 +76,7 @@ char Handle_Value(int Randc) {
   }
 }
 
+// Greeting System for Player
 void Greetings(int point) {
   if (point == 1) {
     printf("\n\n\n\t\t Hurry! You won the Game!");
